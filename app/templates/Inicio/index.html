@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- ya lo tenías -->
+  <title> PTAR: Planta de Tratamiento de Agua - FES Acatlán</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/app/static/css/index.css">
+</head>
+ <script src="/Frontend/Inicio/index.js"></script>
+
+<body>
+
+  <header class="position-relative">
+  <div class="bg-gradient-ptar w-100 position-absolute top-0 start-0"></div>
+  <div class="container d-flex align-items-center justify-content-between py-2 header-content">
+    <img src="/app/static/Imagenes/logo_fesa2.png" alt="UNAM" class="logo-unam">
+    
+    <img src="/app/static/Imagenes/logoPTAR-Photoroom.png" alt="PTAR" class="logo-ptar">
+  </div>
+</header>
+
+ 
+<main class="fondo-vista" id="header">
+   <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg bg-primary">
+    <div class="container">
+      <button class="navbar-toggler" type="button"
+              data-bs-toggle="collapse" data-bs-target="#ptarNavbar"
+              aria-controls="ptarNavbar" aria-expanded="false"
+              aria-label="Mostrar menú">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="ptarNavbar">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item px-2">
+            <a class="nav-link "  href="/Frontend/Inicio/index.html">Información</a>
+          </li>
+          <li class="nav-item px-2">
+            <a class="nav-link "  href="/Frontend/Galeria/Galeria.html">Galería</a>
+          </li>
+          <li class="nav-item px-2">
+            <a class="nav-link " href="/Frontend/ServicioSocial/ServicioSocial.html">Servicio Social</a>
+          </li>
+          <li class="nav-item px-2">
+            <a class="nav-link " href="#contacto">Contacto</a>
+          </li>
+          <li class="nav-item px-2">
+            <a class="nav-link " href="/Frontend/Practicas Profesionales/PracticasProfesionales.html">Prácticas profesionales</a>
+          </li>
+          <li class="nav-item px-2">
+            <a class="nav-link" href="/Frontend/Login/LoginTrabajadores.html">Portal</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- CONTENIDO DE EJEMPLO -->
+  <main class="mt-6">
+    <div class="container bg-info-section" id="informacion">
+      <div class="row justify-content-center">
+        <div class="col-12 text-center mb-4">
+        
+          <h1 class="letra-grande">Planta de Tratamiento de Aguas Residuales</h1>
+
+             <section id="carousel-view">
+  <div class="carousel-container">
+    <h2 class="carousel-title">Galería de Destinos</h2>
+    <div class="carousel">
+      <div class="carousel-inner" id="carousel-inner">
+        <!-- JS inyecta .carousel-item aquí -->
+      </div>
+    </div>
+    <div class="carousel-controls">
+      <button class="carousel-btn" id="prev-btn">Anterior</button>
+      <button class="carousel-btn" id="next-btn">Siguiente</button>
+    </div>
+    <div class="indicators" id="indicators"></div>
+    <a href="/Frontend/Galeria/Galeria.html" class="admin-link">Ir al Panel</a>
+  </div>
+</section>
+
+        
+          <p class="letra-subtitulo">
+            La Planta de Tratamiento de Aguas Residuales (PTAR) de la FES Acatlán es un sistema diseñado para procesar y reutilizar el agua residual del campus, promoviendo la sustentabilidad y el cuidado del medio ambiente.
+          </p>
+        </div>
+
+      <!-- Miniatura 1 -->
+      <div class="col-12 col-md-6 justify-content-center d-flex">
+        <img
+          src="/IMG/PTAR_MOD.jpeg"
+          alt="PTAR Mod"
+          class="thumbnail-img img-fluid"
+          data-bs-toggle="modal"
+          data-bs-target="#imageModal"
+          data-bs-image="/IMG/PTAR_MOD.jpeg"
+        >
+      </div>
+
+      <!-- Miniatura 2 -->
+      <div class="col-12 col-md-6 mt-1 justify-content-center d-flex">
+        <img
+          src="/IMG/PTAR_FOTO1.jpg"
+          alt="PTAR Vista"
+          class="thumbnail-img img-fluid"
+          data-bs-toggle="modal"
+          data-bs-target="#imageModal"
+          data-bs-image="/IMG/PTAR_FOTO1.jpg"
+        >
+      </div>
+
+    </div>
+  </div>
+
+  <div class="container bg-info-section py-5" id="informacion2">
+    <div class="row">
+      <!-- OBJETIVO -->
+      <div class="col-md-6 text-center mb-4 d-flex row">
+        <img
+            src="/IMG/DigramaPTAR.png"
+            alt="Diagrama PTAR"
+            class="">
+        <button
+          class="btn btn-outline-light btn-sm mb-3 row"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseObjetivo"
+          aria-expanded="false"
+          aria-controls="collapseObjetivo">
+          Objetivo
+        </button>
+        <div class="collapse" id="collapseObjetivo">
+          <p class="text-white">
+            Construir y poner en marcha la operación de la planta de tratamiento
+            de aguas residuales para el riego de las áreas verdes de la FES
+            Acatlán, a fin de minimizar el impacto ecológico, así como coadyuvar
+            con la preservación del vital líquido suministrado por el pozo.
+          </p>
+          
+        </div>
+      </div>
+
+      <!-- IMPACTO Y BENEFICIO SOCIAL -->
+      <div class="col-md-6 text-center mb-4">
+        <img
+            src="/IMG/FotodeReactor.jpg"
+            alt="Reactor PTAR"
+            class="img-fluid d-block mx-auto mt-3">
+       
+        <button
+          class="btn btn-outline-light btn-sm mb-3"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseImpacto"
+          aria-expanded="false"
+          aria-controls="collapseImpacto">
+          Impacto y Beneficio Social
+        </button>
+        <div class="collapse" id="collapseImpacto">
+          <ul class="text-white text-start">
+            <li>Tratamiento de aguas residuales generadas por la comunidad.</li>
+            <li>Disminución de descarga a la red municipal para conservación.</li>
+            <li>Riego de áreas verdes con agua tratada, sustituyendo agua potable.</li>
+            <li>Cumplimiento de los objetivos de la Universidad Sustentable.</li>
+            <li>Fortalecimiento del conocimiento ambiental en la comunidad.</li>
+          </ul>
+          
+        </div>
+      </div>
+    </div>
+
+    <!-- EJEMPLO DE OTRA SECCIÓN: ASPECTOS ACADÉMICOS -->
+    <div class="row">
+      <div class="col-md-6 text-center mb-4">
+        <h2 class="styled-heading">Aspectos Académicos</h2>
+        <button
+          class="btn btn-outline-light btn-sm mb-3"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseAcademicos"
+          aria-expanded="false"
+          aria-controls="collapseAcademicos">
+          Ver más
+        </button>
+        <div class="collapse" id="collapseAcademicos">
+          <p class="text-white">
+            La PTAR sirve como laboratorio vivo para asignaturas de Ingeniería
+            Ambiental, Biotecnología y Ciencias del Agua, aportando prácticas
+            de campo y proyectos de investigación.
+          </p>
+          <img
+            src="/IMG/PrototipoPracticas.jpg"
+            alt="Aspectos Académicos"
+            class="img-fluid d-block mx-auto mt-3">
+        </div>
+      </div>
+      
+      <div class="col-md-6 text-center mb-4">
+        <h2 class="styled-heading">Ventajas</h2>
+        <button
+          class="btn btn-outline-light btn-sm mb-3"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseAcademicos"
+          aria-expanded="false"
+          aria-controls="collapseAcademicos">
+          Ver más
+        </button>
+        <div class="collapse" id="collapseAcademicos">
+          <ul class="text-white text-start">
+            <li>Baja Inversión.</li>
+            <li>Bajos costos de operación y mantenimiento.</li>
+            <li>Resiste largos tiempos sin alimentación de sustrato.</li>
+            <li>Baja   producción   de    lodos,    ya   estabilizados   y espesados.</li>
+            <li>Remoción  de  materia  orgánica  entre  60  y  80% según el tipo de agua residual.</li>
+          </ul>
+          <img
+            src="/IMG/reactor1_anaerobico.jpg"
+            alt="Aspectos Académicos"
+            class="img-fluid d-block mx-auto mt-3">
+        </div>
+      </div>
+
+      <!-- PUEDES AÑADIR AQUÍ MÁS SECCIONES -->
+    </div>
+   
+
+      <!-- PUEDES AÑADIR AQUÍ MÁS SECCIONES -->
+    
+  </div>
+  
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer bg-dark text-white text-center py-2 mt-4">
+    &copy; 2025 FES Acatlán - UNAM | Información sobre la PTAR
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+      window.addEventListener("scroll", function () {
+        var header = document.querySelector("header");
+        header.classList.toggle("fixed-top", window.scrollY > 0);
+      });
+    </script>
+<script src="/app/templates/Inicio/index.js"></script>
+</body>
+</html>
