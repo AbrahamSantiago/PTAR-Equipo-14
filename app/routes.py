@@ -19,7 +19,8 @@ def allowed_file(filename):
 @bp.route('/')
 def index():
     # Página de inicio
-    return render_template('index.html')
+    return render_template('Inicio/index.html')
+
 
 @bp.route('/subir', methods=['GET', 'POST'])
 def subir():
