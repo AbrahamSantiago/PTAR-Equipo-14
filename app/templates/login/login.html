@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Potal Login</title>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+</head>
+<body>
+  <div class="login-container">
+
+    <h2 class="letra-grande">Iniciar Sesión a Portal</h2>
+    <form id="loginForm">
+      <input type="text" id="usuario" placeholder="Número Usuario" required>
+      <input type="password" id="contrasena" placeholder="Contraseña" required>
+      <button type="submit">Entrar</button>
+    </form>
+    <div id="error" class="error-message">Número de usuario o contraseña incorrectos.</div>
+  </div>
+
+  <script>
+    const form = document.getElementById('loginForm');
+    const error = document.getElementById('error');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault(); // Evita que se recargue la página
+
+      const usuario = document.getElementById('usuario').value;
+      const contrasena = document.getElementById('contrasena').value;
+
+      // Ejemplo simple de verificación
+      if (usuario === 'admin' && contrasena === '1234') {
+        // Quita el mensaje de error si se mostraba
+        error.style.display = 'none';
+        
+        // Redirige a otra página
+        window.location.href = "{{ url_for('main.PortalAdmin') }}";
+
+      if (usuario==='empled' && contrasena==='1234') {
+        window.location.href="{{ url_for('main.PortalAdmin') }}"
+      } 
+      else {
+        
+      }
+      } else {
+        // Muestra mensaje de error
+        error.style.display = 'block';
+      }
+    });
+  </script>
+
+</body>
+</html>

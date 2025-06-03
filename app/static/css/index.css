@@ -35,6 +35,7 @@ header {
 .logo-unam.img-fluid,
 .logo-ptar.img-fluid {
   max-width: none;
+  max-height: none;
 }
 .navbar-nav{
  background-color: #125bca !important;
@@ -42,7 +43,7 @@ header {
 /* Espaciado de links nav */
 .navbar-nav .nav-item {
   margin: 0 0.5rem;
-  font-family: 'Asao', sans-serif;
+  font-family: 'Asap', sans-serif;
   font-weight: 1000; 
   
 }
@@ -226,7 +227,7 @@ btn-link {
         }
 
         .carousel {
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
             position: relative;
             overflow: hidden;

@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let carouselData = JSON.parse(localStorage.getItem('carouselData')) || [
             {
                 id: 1,
-                url: "https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80",
+                url: "/app/static/Imagenes/Logo_PTAR.png",
                 link: "https://es.wikipedia.org/wiki/Monta%C3%B1a",
                 title: "Montañas Verdes",
                 description: "Las montañas verdes ofrecen paisajes impresionantes con su exuberante vegetación y vistas panorámicas. Ideal para senderismo, camping y fotografía de naturaleza. La región cuenta con rutas para todos los niveles de experiencia."
