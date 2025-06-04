@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Datos Interesantes - PTAR</title>
+  <link rel="stylesheet" href="Datos.css">
+</head>
+<body>
+
+  <!-- Barra superior -->
+  <div class="barra-superior">
+    <div class="barra-contenido">
+      <img src="Visuales/UNAM.png" alt="UNAM" class="logo-unam">
+      <h1 class="titulo-barra">PTAR: Planta de Tratamiento de Aguas Residuales</h1>
+      <img src="Visuales/PTAR.png" alt="PTAR" class="logo-ptar">
+    </div>
+  </div>
+
+  <!-- Menú principal -->
+  <nav class="menu-navegacion">
+    <ul>
+      <li><a href="index.html">Galería</a></li>
+      <li><a href="#">Servicio Social</a></li>
+      <li><a href="#">Contacto</a></li>
+      <li><a href="#">Prácticas</a></li>
+      <li><a href="#">Portal</a></li>
+    </ul>
+  </nav>
+
+  <!-- Cuerpo dividido -->
+  <div class="contenido">
+    <!-- Barra lateral -->
+    <aside class="sidebar">
+      <h3>Secciones</h3>
+      <ul>
+        <li><a href="Marketing.html">🖼️ Galeria</a></li>
+        <li><a href="Anuncios.html">📝 Anuncios</a></li>
+        <li><a href="DastosInteresantes.html">ℹ️ Datos Interesantes</a></li>
+      </ul>
+    </aside>
+
+    <!-- Contenido principal -->
+    <main class="principal">
+      <section class="formulario">
+        <h2>Agregar Dato Interesante</h2>
+        <form id="datoForm">
+          <input type="text" id="titulo" placeholder="Título del dato" required>
+          <textarea id="contenido" placeholder="Descripción del dato..." required></textarea>
+          <input type="file" id="imagenDato" accept="image/*">
+          <button type="submit">Agregar</button>
+        </form>
+      </section>
+
+      <section class="datos-interesantes">
+        <h2>Datos Publicados</h2>
+        <div id="contenedorDatos" class="contenedor-datos"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="Datos.js"></script>
+</body>
+</html>

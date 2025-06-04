@@ -1,0 +1,164 @@
+/* Base */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f2f2f2;
+  color: #333;
+}
+
+/* Barra superior */
+.barra-superior {
+  background: linear-gradient(to right, #030a29, #442e7e, #6967a8, #ffffff,#ffffff);
+  padding: 10px 20px;
+  color: white;
+}
+
+.barra-contenido {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.logo-unam, .logo-ptar {
+  height: 60px;
+  object-fit: contain;
+}
+
+.titulo-barra {
+  flex: 1;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+/* Menú horizontal */
+.menu-navegacion {
+  background: #007bff;
+}
+.menu-navegacion ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+}
+.menu-navegacion li {
+  margin: 0 15px;
+}
+.menu-navegacion a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+.menu-navegacion a:hover {
+  color: #e0e0ff;
+}
+
+/* Layout */
+.contenido {
+  display: flex;
+}
+.sidebar {
+  width: 220px;
+  background: #fff;
+  padding: 20px;
+  border-right: 1px solid #ccc;
+}
+.sidebar h3 {
+  margin-bottom: 15px;
+}
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+.sidebar li {
+  margin: 10px 0;
+}
+.sidebar a {
+  text-decoration: none;
+  color: #007bff;
+}
+.sidebar a:hover {
+  text-decoration: underline;
+}
+
+.principal {
+  flex: 1;
+  padding: 20px;
+}
+
+/* Formulario */
+.formulario {
+  background: white;
+  padding: 20px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.formulario form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.formulario input, .formulario select, .formulario button {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.formulario button {
+  background: #007bff;
+  color: white;
+  cursor: pointer;
+}
+.formulario button:hover {
+  background: #0056b3;
+}
+
+/* Galerías */
+.galeria img, .galeria iframe {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.2);
+}
+
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+.galeria-item {
+  position: relative;
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.galeria-item img,
+.galeria-item video {
+  width: 100%;
+  max-height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.galeria-item button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: crimson;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.galeria-item button:hover {
+  background: darkred;
+}
+
