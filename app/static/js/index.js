@@ -1,149 +1,178 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const navLinks = document.querySelectorAll('.nav-link');
-  navLinks.forEach(link => {
-    link.addEventListener('mouseover', () => {
-      link.classList.add('hover-color');
+// app/static/js/index.js
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Código existente para el header
+    window.addEventListener("scroll", function () {
+        var header = document.querySelector("header");
+        header.classList.toggle("fixed-top", window.scrollY > 0);
     });
-    link.addEventListener('mouseout', () => {
-      link.classList.remove('hover-color');
+
+    // Código para el hover del navbar
+    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+    navLinks.forEach(link => {
+        link.addEventListener('mouseenter', function() {
+            this.classList.add('hover-color');
+        });
+        
+        link.addEventListener('mouseleave', function() {
+            this.classList.remove('hover-color');
+        });
     });
-  });
-});
-document.addEventListener('DOMContentLoaded', () => {
-  const imageModal = document.getElementById('imageModal');
-  imageModal.addEventListener('show.bs.modal', event => {
-    const thumb = event.relatedTarget;                              // miniatura que disparó
-    const src   = thumb.getAttribute('data-bs-image');              // ruta real
-    const alt   = thumb.getAttribute('alt') || '';
-    const modalImg = imageModal.querySelector('#modalImage');
-    modalImg.src = src;
-    modalImg.alt = alt;
-  });
-});
-//////////////// CARRUSEL
-// Datos iniciales de ejemplo con enlaces
 
-
-// Obtener datos del carrusel desde localStorage
-        let carouselData = JSON.parse(localStorage.getItem('carouselData')) || [
-            {
-                id: 1,
-                url: "/app/static/Imagenes/Logo_PTAR.png",
-                link: "https://es.wikipedia.org/wiki/Monta%C3%B1a",
-                title: "Montañas Verdes",
-                description: "Las montañas verdes ofrecen paisajes impresionantes con su exuberante vegetación y vistas panorámicas. Ideal para senderismo, camping y fotografía de naturaleza. La región cuenta con rutas para todos los niveles de experiencia."
-            },
-            {
-                id: 2,
-                url: "https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80",
-                link: "https://es.wikipedia.org/wiki/Lago",
-                title: "Atardecer en el Lago",
-                description: "Disfruta de atardeceres inolvidables en este lago cristalino. Perfecto para actividades acuáticas como kayak, natación y pesca. El lago también ofrece áreas de picnic y observación de aves para toda la familia."
-            },
-            {
-                id: 3,
-                url: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80",
-                link: "https://es.wikipedia.org/wiki/Bosque",
-                title: "Bosque Montañoso",
-                description: "Explora este bosque montañoso lleno de vida silvestre y senderos naturales. Con más de 50 km de rutas marcadas, es un paraíso para excursionistas y amantes de la naturaleza. La diversidad de flora y fauna es impresionante."
-            }
-        ];
-
-        // Elementos del DOM
-        const carouselInner = document.getElementById('carousel-inner');
-        const indicatorsContainer = document.getElementById('indicators');
-        const prevBtn = document.getElementById('prev-btn');
-        const nextBtn = document.getElementById('next-btn');
-
-        // Variables para el carrusel
-        let currentIndex = 0;
-        let interval;
-
-        // Inicializar el carrusel
-        function initCarousel() {
-            carouselInner.innerHTML = '';
-            indicatorsContainer.innerHTML = '';
-            
-            carouselData.forEach((item, index) => {
-                // Crear elemento del carrusel
-                const carouselItem = document.createElement('div');
-                carouselItem.className = 'carousel-item';
-                if (index === 0) carouselItem.classList.add('active');
-                
-                carouselItem.innerHTML = `
-                    <img src="${item.url}" alt="${item.title}" class="carousel-img">
-                    <div class="carousel-caption">
-                        <h3>${item.title}</h3>
-                        <p>${item.link ? 'Haz clic para ver detalles' : 'Sin enlace asociado'}</p>
-                    </div>
-                `;
-                
-                // Agregar evento de clic para abrir enlace
-                carouselItem.addEventListener('click', () => {
-                    if (item.link) {
-                        window.open(item.link, '_blank');
-                    }
-                });
-                
-                carouselInner.appendChild(carouselItem);
-                
-                // Crear indicadores
-                const indicator = document.createElement('div');
-                indicator.className = 'indicator';
-                if (index === 0) indicator.classList.add('active');
-                indicator.dataset.index = index;
-                
-                indicator.addEventListener('click', () => {
-                    currentIndex = index;
-                    updateCarousel();
-                });
-                
-                indicatorsContainer.appendChild(indicator);
-            });
-            
-            // Iniciar rotación automática
-            startCarousel();
-        }
-
-        // Actualizar carrusel
-        function updateCarousel() {
-            const items = document.querySelectorAll('.carousel-item');
-            const indicators = document.querySelectorAll('.indicator');
-            
-            // Ocultar todos los items
-            items.forEach(item => item.classList.remove('active'));
-            indicators.forEach(indicator => indicator.classList.remove('active'));
-            
-            // Mostrar item actual
-            items[currentIndex].classList.add('active');
-            indicators[currentIndex].classList.add('active');
-            
-            // Actualizar posición
-            carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
-        }
-
-        // Iniciar rotación automática
-        function startCarousel() {
-            clearInterval(interval);
-            interval = setInterval(() => {
-                currentIndex = (currentIndex + 1) % carouselData.length;
-                updateCarousel();
-            }, 5000);
-        }
-
-        // Eventos de navegación
-        prevBtn.addEventListener('click', () => {
-            currentIndex = (currentIndex - 1 + carouselData.length) % carouselData.length;
-            updateCarousel();
-            startCarousel();
-        });
-
-        nextBtn.addEventListener('click', () => {
-            currentIndex = (currentIndex + 1) % carouselData.length;
-            updateCarousel();
-            startCarousel();
-        });
-
-        // Inicializar el carrusel al cargar la página
-        document.addEventListener('DOMContentLoaded', initCarousel);
+    // CÓDIGO DEL CARRUSEL
+    const carouselInner = document.getElementById('carousel-inner');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const indicators = document.querySelectorAll('.indicator');
     
+    // Verificar que los elementos existen
+    if (!carouselInner) {
+        console.warn('Carrusel no encontrado - posiblemente no hay imágenes');
+        return;
+    }
+    
+    if (!prevBtn || !nextBtn) {
+        console.warn('Botones del carrusel no encontrados');
+        return;
+    }
+
+    const carouselItems = document.querySelectorAll('.carousel-item');
+    let currentIndex = 0;
+    const totalItems = carouselItems.length;
+
+    if (totalItems === 0) {
+        console.warn('No hay elementos en el carrusel');
+        return;
+    }
+
+    // Función para mostrar slide específico
+    function showSlide(index) {
+        // Asegurar que el índice esté dentro del rango
+        if (index >= totalItems) {
+            currentIndex = 0;
+        } else if (index < 0) {
+            currentIndex = totalItems - 1;
+        } else {
+            currentIndex = index;
+        }
+
+        // Mover el carrusel
+        const translateX = -currentIndex * 100;
+        carouselInner.style.transform = `translateX(${translateX}%)`;
+
+        // Actualizar clases active
+        carouselItems.forEach((item, i) => {
+            item.classList.toggle('active', i === currentIndex);
+        });
+
+        // Actualizar indicadores
+        indicators.forEach((indicator, i) => {
+            indicator.classList.toggle('active', i === currentIndex);
+        });
+    }
+
+    // Función para ir al siguiente slide
+    function nextSlide() {
+        showSlide(currentIndex + 1);
+    }
+
+    // Función para ir al slide anterior
+    function prevSlide() {
+        showSlide(currentIndex - 1);
+    }
+
+    // Event listeners para botones
+    nextBtn.addEventListener('click', nextSlide);
+    prevBtn.addEventListener('click', prevSlide);
+
+    // Event listeners para indicadores
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+            showSlide(index);
+        });
+    });
+
+    // Event listeners para clicks en las imágenes
+    carouselItems.forEach((item, index) => {
+        item.addEventListener('click', function() {
+            const link = this.dataset.link;
+            if (link && link.trim() !== '' && link !== 'null') {
+                console.log(`Abriendo enlace: ${link}`);
+                window.open(link, '_blank');
+            } else {
+                console.log(`Imagen ${index + 1}: Sin enlace asociado`);
+            }
+        });
+        
+        // Cambiar cursor si hay enlace
+        const hasLink = item.dataset.link && item.dataset.link.trim() !== '' && item.dataset.link !== 'null';
+        item.style.cursor = hasLink ? 'pointer' : 'default';
+    });
+
+    // Auto-play del carrusel (opcional)
+    let autoPlayInterval;
+    
+    function startAutoPlay() {
+        autoPlayInterval = setInterval(() => {
+            nextSlide();
+        }, 5000); // Cambia cada 5 segundos
+    }
+
+    function stopAutoPlay() {
+        if (autoPlayInterval) {
+            clearInterval(autoPlayInterval);
+        }
+    }
+
+    // Iniciar auto-play
+    startAutoPlay();
+
+    // Pausar auto-play cuando el mouse está sobre el carrusel
+    const carousel = document.querySelector('.carousel');
+    if (carousel) {
+        carousel.addEventListener('mouseenter', stopAutoPlay);
+        carousel.addEventListener('mouseleave', startAutoPlay);
+    }
+
+    // Controles de teclado
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+            prevSlide();
+        } else if (e.key === 'ArrowRight') {
+            nextSlide();
+        }
+    });
+
+    // Soporte para gestos táctiles (móvil)
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    if (carousel) {
+        carousel.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        carousel.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+    }
+
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        const diff = touchStartX - touchEndX;
+        
+        if (Math.abs(diff) > swipeThreshold) {
+            if (diff > 0) {
+                nextSlide(); // Swipe izquierda = siguiente
+            } else {
+                prevSlide(); // Swipe derecha = anterior
+            }
+        }
+    }
+
+    // Inicializar el carrusel
+    showSlide(0);
+
+    console.log(`Carrusel inicializado con ${totalItems} elementos`);
+});

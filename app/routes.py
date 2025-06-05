@@ -2,6 +2,7 @@
 
 import os
 import json
+import time
 from flask import (
     Blueprint, render_template, request, redirect, url_for, current_app, send_from_directory, flash, jsonify
 )
@@ -24,10 +25,31 @@ def load_carousel_data():
     """Carga los datos del carrusel desde el archivo JSON"""
     try:
         if os.path.exists(CAROUSEL_DATA_PATH):
-            with open(CAROUSEL_DATA_PATH, 'r') as f:
-                return json.load(f)
+            with open(CAROUSEL_DATA_PATH, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                # Verificar y corregir rutas de imágenes
+                for item in data:
+                    # Si la URL comienza con /static/Imagenes/, usar url_for
+                    if item['url'].startswith('/static/Imagenes/'):
+                        # Extraer solo el nombre del archivo
+                        filename = item['url'].replace('/static/Imagenes/', '')
+                        # Verificar si el archivo existe
+                        file_path = os.path.join(current_app.static_folder, 'Imagenes', filename)
+                        if os.path.exists(file_path):
+                            item['url'] = f"/static/Imagenes/{filename}"
+                        else:
+                            print(f"Imagen no encontrada: {file_path}")
+                    # Si la URL comienza con /static/uploads/, verificar existencia
+                    elif item['url'].startswith('/static/uploads/'):
+                        filename = item['url'].replace('/static/uploads/', '')
+                        file_path = os.path.join(current_app.config['UPLOAD_FOLDER'], filename)
+                        if not os.path.exists(file_path):
+                            print(f"Imagen no encontrada: {file_path}")
+                return data
     except Exception as e:
         print(f"Error loading carousel data: {e}")
+    
+    # Datos por defecto con rutas corregidas
     return [
         {
             "id": 1,
@@ -40,7 +62,7 @@ def load_carousel_data():
             "id": 2,
             "url": "/static/Imagenes/PTAR_FOTO1.jpg",
             "link": "https://es.wikipedia.org/wiki/Reactor_anaerobio",
-            "title": "Reactor Anaerobio",
+            "title": "Reactor Anaerobio", 
             "description": "Reactor anaerobio de la PTAR para el tratamiento de aguas residuales"
         }
     ]
@@ -48,13 +70,15 @@ def load_carousel_data():
 def save_carousel_data(data):
     """Guarda los datos del carrusel en el archivo JSON"""
     try:
-        with open(CAROUSEL_DATA_PATH, 'w') as f:
-            json.dump(data, f, indent=4)
+        # Crear directorio si no existe
+        os.makedirs(os.path.dirname(CAROUSEL_DATA_PATH), exist_ok=True)
+        with open(CAROUSEL_DATA_PATH, 'w', encoding='utf-8') as f:
+            json.dump(data, f, indent=4, ensure_ascii=False)
         return True
     except Exception as e:
         print(f"Error saving carousel data: {e}")
         return False
-
+    
 @main.route('/')
 def index():
     # Página de inicio
@@ -101,29 +125,56 @@ def get_carousel():
 
 @main.route('/api/carousel', methods=['POST'])
 def add_carousel_item():
-    # Verificar si se envió un archivo
-    if 'file' not in request.files:
-        return jsonify({'error': 'No file part'}), 400
-    file = request.files['file']
-    if file.filename == '':
-        return jsonify({'error': 'No selected file'}), 400
-    if file and allowed_file(file.filename):
-        filename = secure_filename(file.filename)
-        file.save(os.path.join(current_app.config['UPLOAD_FOLDER'], filename))
+    try:
+        # Verificar si se envió un archivo
+        if 'file' not in request.files:
+            return jsonify({'error': 'No file part'}), 400
         
-        # Guardar en el JSON
-        carousel_data = load_carousel_data()
-        new_item = {
-            'id': len(carousel_data) + 1,
-            'url': f"/static/uploads/{filename}",
-            'link': request.form.get('link', ''),
-            'title': request.form.get('title', 'Nueva Imagen'),
-            'description': request.form.get('description', '')
-        }
-        carousel_data.append(new_item)
-        save_carousel_data(carousel_data)
-        return jsonify(new_item), 201
-    return jsonify({'error': 'File not allowed'}), 400
+        file = request.files['file']
+        if file.filename == '':
+            return jsonify({'error': 'No selected file'}), 400
+            
+        if file and allowed_file(file.filename):
+            # Crear nombre de archivo único
+            filename = secure_filename(file.filename)
+            timestamp = str(int(time.time()))
+            name, ext = os.path.splitext(filename)
+            unique_filename = f"{name}_{timestamp}{ext}"
+            
+            # Asegurar que existe la carpeta uploads
+            os.makedirs(current_app.config['UPLOAD_FOLDER'], exist_ok=True)
+            
+            file_path = os.path.join(current_app.config['UPLOAD_FOLDER'], unique_filename)
+            file.save(file_path)
+            
+            # Guardar en el JSON
+            carousel_data = load_carousel_data()
+            
+            # Generar un nuevo ID único
+            max_id = max([item.get('id', 0) for item in carousel_data], default=0)
+            new_id = max_id + 1
+            
+            new_item = {
+                'id': new_id,
+                'url': f"/static/uploads/{unique_filename}",
+                'link': request.form.get('link', ''),
+                'title': request.form.get('title', f'Imagen {new_id}'),
+                'description': request.form.get('description', 'Agrega una descripción para esta imagen')
+            }
+            
+            carousel_data.append(new_item)
+            
+            if save_carousel_data(carousel_data):
+                return jsonify(new_item), 201
+            else:
+                return jsonify({'error': 'Error saving data'}), 500
+                
+        return jsonify({'error': 'File not allowed'}), 400
+        
+    except Exception as e:
+        print(f"Error in add_carousel_item: {e}")
+        return jsonify({'error': 'Internal server error'}), 500
+
 
 @main.route('/api/carousel/<int:item_id>', methods=['PUT'])
 def update_carousel_item(item_id):
@@ -170,6 +221,32 @@ def reorder_carousel():
         save_carousel_data(reordered_data)
         return jsonify({'success': True}), 200
     return jsonify({'error': 'Invalid order'}), 400
+
+@main.route('/debug/carousel')
+def debug_carousel():
+    carousel_data = load_carousel_data()
+    
+    # Verificar existencia de archivos
+    for item in carousel_data:
+        if item['url'].startswith('/static/uploads/'):
+            filename = item['url'].replace('/static/uploads/', '')
+            file_path = os.path.join(current_app.config['UPLOAD_FOLDER'], filename)
+            item['file_exists'] = os.path.exists(file_path)
+            item['file_path'] = file_path
+        elif item['url'].startswith('/static/Imagenes/'):
+            filename = item['url'].replace('/static/Imagenes/', '')
+            file_path = os.path.join(current_app.static_folder, 'Imagenes', filename)
+            item['file_exists'] = os.path.exists(file_path)
+            item['file_path'] = file_path
+    
+    return jsonify({
+        'carousel_data': carousel_data,
+        'data_file_exists': os.path.exists(CAROUSEL_DATA_PATH),
+        'upload_folder': current_app.config['UPLOAD_FOLDER'],
+        'upload_folder_exists': os.path.exists(current_app.config['UPLOAD_FOLDER']),
+        'static_folder': current_app.static_folder,
+        'total_items': len(carousel_data)
+    })
 
 # Rutas para las páginas del navbar
 @main.route('/galeria')

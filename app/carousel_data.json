@@ -1,1 +1,16 @@
-[]
+[
+    {
+        "id": 1,
+        "url": "/static/uploads/JefePlanta_1749072080.jpg",
+        "link": "",
+        "title": "Imagen 1749072080683",
+        "description": "Agrega una descripción para esta imagen"
+    },
+    {
+        "id": 2,
+        "url": "/static/uploads/Logo_PTAR_1749072092.png",
+        "link": "",
+        "title": "Imagen 1749072092818",
+        "description": "Agrega una descripción para esta imagen"
+    }
+]

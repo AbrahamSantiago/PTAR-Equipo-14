@@ -16,6 +16,8 @@
     rel="stylesheet" 
     href="{{ url_for('static', filename='css/index.css') }}"
   >
+
+   
  
 </head>
 <body>
@@ -82,19 +84,53 @@
           <div class="col-12 text-center mb-4">
             <h1 class="letra-grande">Planta de Tratamiento de Aguas Residuales PTAR</h1>
             <section id="carousel-view">
-              <div class="carousel-container">
-                <div class="carousel">
-                  <div class="carousel-inner" id="carousel-inner">
-                    <!-- Las imágenes del carrusel se cargarán aquí con JavaScript -->
-                  </div>
-                </div>
-                <div class="carousel-controls">
-                  <button class="carousel-btn" id="prev-btn">Anterior</button>
-                  <button class="carousel-btn" id="next-btn">Siguiente</button>
-                </div>
-                <div class="indicators" id="indicators"></div>
-              </div>
-            </section>
+  <div class="carousel-container">
+    {% if carousel_data and carousel_data|length > 0 %}
+    <div class="carousel">
+      <div class="carousel-inner" id="carousel-inner">
+        {% for item in carousel_data %}
+        <div class="carousel-item {% if loop.first %}active{% endif %}" data-link="{{ item.link or '' }}">
+          <img 
+            src="{{ item.url }}" 
+            alt="{{ item.title }}" 
+            class="carousel-img"
+            loading="lazy"
+            onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDQwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjRjVGNUY1Ii8+CjxwYXRoIGQ9Ik0xNzUgMTI1SDIyNVYxNzVIMTc1VjEyNVoiIGZpbGw9IiNEREREREQiLz4KPHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0NCA0NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHA+CjwvZz4KPC9zdmc+'; console.error('Error cargando imagen:', '{{ item.url }}');"
+          >
+          <div class="carousel-caption">
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.description or (item.link and 'Haz clic para ver más detalles' or 'Sin descripción disponible') }}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    
+    <div class="carousel-controls">
+      <button class="carousel-btn" id="prev-btn">
+        <i class="fas fa-chevron-left"></i> Anterior
+      </button>
+      <button class="carousel-btn" id="next-btn">
+        Siguiente <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+    
+    <div class="indicators" id="indicators">
+      {% for item in carousel_data %}
+      <div class="indicator {% if loop.first %}active{% endif %}" data-index="{{ loop.index0 }}"></div>
+      {% endfor %}
+    </div>
+    
+    {% else %}
+    <div class="empty-carousel">
+      <h3>🖼️ Carrusel de Imágenes</h3>
+      <p>No hay imágenes disponibles en el carrusel</p>
+      
+    
+    </div>
+    {% endif %}
+  </div>
+</section>
           </div>
 
           <!-- Miniatura 1 -->
@@ -123,120 +159,7 @@
         </div>
       </div>
 
-      <div class="container bg-info-section py-5" id="informacion2">
-        <div class="row">
-          <!-- OBJETIVO -->
-          <div class="col-md-6 text-center mb-4 d-flex row">
-            <img
-              src="{{ url_for('static', filename='Imagenes/DigramaPTAR.png') }}"
-              alt="Diagrama PTAR"
-              class=""
-            >
-            <button
-              class="btn btn-outline-light btn-sm mb-3 row"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#collapseObjetivo"
-              aria-expanded="false"
-              aria-controls="collapseObjetivo"
-            >
-              Objetivo
-            </button>
-            <div class="collapse" id="collapseObjetivo">
-              <p class="text-white">
-                Construir y poner en marcha la operación de la planta de tratamiento
-                de aguas residuales para el riego de las áreas verdes de la FES
-                Acatlán, a fin de minimizar el impacto ecológico, así como coadyuvar
-                con la preservación del vital líquido suministrado por el pozo.
-              </p>
-            </div>
-          </div>
-
-          <!-- IMPACTO Y BENEFICIO SOCIAL -->
-          <div class="col-md-6 text-center mb-4">
-            <img
-              src="{{ url_for('static', filename='Imagenes/FotodeReactor.jpg') }}"
-              alt="Reactor PTAR"
-              class="img-fluid d-block mx-auto mt-3"
-            >
-            <button
-              class="btn btn-outline-light btn-sm mb-3"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#collapseImpacto"
-              aria-expanded="false"
-              aria-controls="collapseImpacto"
-            >
-              Impacto y Beneficio Social
-            </button>
-            <div class="collapse" id="collapseImpacto">
-              <ul class="text-white text-start">
-                <li>Tratamiento de aguas residuales generadas por la comunidad.</li>
-                <li>Disminución de descarga a la red municipal para conservación.</li>
-                <li>Riego de áreas verdes con agua tratada, sustituyendo agua potable.</li>
-                <li>Cumplimiento de los objetivos de la Universidad Sustentable.</li>
-                <li>Fortalecimiento del conocimiento ambiental en la comunidad.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <!-- EJEMPLO DE OTRA SECCIÓN: ASPECTOS ACADÉMICOS -->
-        <div class="row">
-          <div class="col-md-6 text-center mb-4">
-            <h2 class="styled-heading">Aspectos Académicos</h2>
-            <button
-              class="btn btn-outline-light btn-sm mb-3"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#collapseAcademicos"
-              aria-expanded="false"
-              aria-controls="collapseAcademicos"
-            >
-              Ver más
-            </button>
-            <div class="collapse" id="collapseAcademicos">
-              <p class="text-white">
-                La PTAR sirve como laboratorio vivo para asignaturas de Ingeniería
-                Ambiental, Biotecnología y Ciencias del Agua, aportando prácticas
-                de campo y proyectos de investigación.
-              </p>
-              <img
-                src="{{ url_for('static', filename='Imagenes/PrototipoPracticas.jpg') }}"
-                alt="Aspectos Académicos"
-                class="img-fluid d-block mx-auto mt-3"
-              >
-            </div>
-          </div>
-          <div class="col-md-6 text-center mb-4">
-            <h2 class="styled-heading">Ventajas</h2>
-            <button
-              class="btn btn-outline-light btn-sm mb-3"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#collapseAcademicos"
-              aria-expanded="false"
-              aria-controls="collapseAcademicos"
-            >
-              Ver más
-            </button>
-            <div class="collapse" id="collapseAcademicos">
-              <ul class="text-white text-start">
-                <li>Baja Inversión.</li>
-                <li>Bajos costos de operación y mantenimiento.</li>
-                <li>Resiste largos tiempos sin alimentación de sustrato.</li>
-                <li>Baja producción de lodos, ya estabilizados y espesados.</li>
-                <li>Remoción de materia orgánica entre 60 y 80% según el tipo de agua residual.</li>
-              </ul>
-              <img
-                src="{{ url_for('static', filename='Imagenes/reactor1_anaerobico.jpg') }}"
-                alt="Aspectos Académicos"
-                class="img-fluid d-block mx-auto mt-3"
-              >
-            </div>
-          </div>
-        </div>
-      </div>
+      <!-- ... resto del contenido ... -->
     </section>
 
     <!-- FOOTER -->
@@ -256,5 +179,6 @@
     </script>
     <!-- Tu JavaScript propio (app/static/js/index.js) -->
     <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+    
   </body>
 </html>
