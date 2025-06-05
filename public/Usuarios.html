@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administración de Usuarios</title>
+  <link rel="stylesheet" href="Usuarios.css">
+</head>
+<body>
+  <!-- Barra superior -->
+  <div class="barra-superior">
+    <div class="barra-contenido">
+      <img src="Visuales/UNAM.png" alt="UNAM" class="logo-unam">
+      <h1 class="titulo-barra">PTAR: Planta de Tratamiento de Aguas Residuales</h1>
+      <img src="Visuales/PTAR.png" alt="PTAR" class="logo-ptar">
+    </div>
+  </div>
+
+  <!-- Menú principal -->
+  <nav class="menu-navegacion">
+    <ul>
+      <li><a href="#">Información</a></li>
+      <li><a href="#">Servicio Social</a></li>
+      <li><a href="#">Contacto</a></li>
+      <li><a href="#">Prácticas profesionales</a></li>
+      <li><a href="Galeria.html">Galería</a></li>
+      <li><a href="Login.html">Portal</a></li>
+    </ul>
+  </nav>
+
+  <div class="contenido">
+    <!-- Barra lateral -->
+    <aside class="sidebar">
+      <h3>Secciones</h3>
+      <ul>
+        <li><a href="contenido.html">Galeria</a></li>
+        <li><a href="anuncios.html">Anuncios</a></li>
+        <li><a href="datos.html"> Datos Interesantes</a></li>
+		<li><a href="usuarios.html"> Usuarios</a></li>
+      </ul>
+    </aside>
+	
+  <div class="container">
+    <h2>Agregar Usuario</h2>
+    <div class="formulario-container">
+      <form id="usuarioForm">
+        <input type="text" id="nombre" placeholder="Nombre de usuario" required>
+        <input type="password" id="password" placeholder="Contraseña" required>
+        <select id="tipoUsuario" required>
+          <option value="">Seleccione un tipo</option>
+          <option value="Administrador">Administrador</option>
+          <option value="Ingeniero">Ingeniero</option>
+          <option value="Estudiante">Estudiante</option>
+        </select>
+        <button type="submit">Agregar Usuario</button>
+      </form>
+    </div>
+
+    <h2>Usuarios Registrados</h2>
+    <div id="usuariosContainer"></div>
+  </div>
+
+  <script src="Usuarios.js"></script>
+</body>
+</html>

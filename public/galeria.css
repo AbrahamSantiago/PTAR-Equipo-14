@@ -1,0 +1,143 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f0f0f0;
+  color: #333;
+  line-height: 1.6;
+}
+
+header {
+  background: #1e88e5;
+  color: white;
+  text-align: center;
+  padding: 30px 20px;
+}
+
+main {
+  padding: 20px;
+}
+
+.seccion {
+  margin: 40px auto;
+  max-width: 1200px; /* Controlar el ancho máximo */
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-align: center; /* Centrar los títulos también */
+}
+
+.seccion h2 {
+  margin-bottom: 15px;
+  color: #0d47a1;
+}
+
+.carrusel-contenedor {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* <- Aquí centramos el carrusel */
+  gap: 10px;
+  overflow: hidden;
+}
+
+.carrusel {
+  display: flex;
+  justify-content: center; /* <- Aquí centramos el contenido dentro del carrusel */
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 20px;
+  padding: 10px 0;
+  scroll-snap-type: x mandatory;
+}
+
+.carrusel img,
+.carrusel video {
+  width: 400px;
+  height: 600px;
+  object-fit: cover;
+  border-radius: 10px;
+  scroll-snap-align: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.btn {
+  background: #2196f3;
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.btn:hover {
+  background: #1976d2;
+}
+
+footer {
+  background: #263238;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  margin-top: 50px;
+}
+
+.barra-superior {
+  background: linear-gradient(to right, #030a29, #442e7e, #6967a8, #ffffff,#ffffff);
+  color: white;
+  padding: 10px 20px;
+}
+
+.barra-contenido {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.logo-unam, .logo-ptar {
+  height: 60px;
+  object-fit: contain;
+}
+
+.titulo-barra {
+  flex: 1;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* Menú de navegación */
+.menu-navegacion {
+  background-color: #0d6efd;
+}
+
+.menu-navegacion ul {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+}
+
+.menu-navegacion li {
+  margin: 0 20px;
+}
+
+.menu-navegacion a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.menu-navegacion a:hover {
+  color: #cce5ff;
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PTAR - Login</title>
+  <link rel="stylesheet" href="Login.css">
+</head>
+<body>
+
+  <!-- Barra superior institucional -->
+  <div class="barra-superior">
+    <div class="barra-contenido">
+      <img src="Visuales/UNAM.png" alt="UNAM" class="logo-unam">
+      <h1 class="titulo-barra">PTAR: Planta de Tratamiento de Aguas Residuales</h1>
+      <img src="Visuales/PTAR.png" alt="PTAR" class="logo-ptar">
+    </div>
+  </div>
+
+  <!-- Menú -->
+  <nav class="menu-navegacion">
+    <ul>
+      <li><a href="#">Información</a></li>
+      <li><a href="#">Servicio Social</a></li>
+      <li><a href="#">Contacto</a></li>
+      <li><a href="#">Prácticas profesionales</a></li>
+	  <li><a href="Galeria.html">Galería</a></li>
+      <li><a href="Login.html">Portal</a></li>
+    </ul>
+  </nav>
+
+  <!-- Fondo con login -->
+  <div class="login-contenedor">
+    <form id="loginForm" class="form-login">
+      <h2>Iniciar Sesión a Portal</h2>
+      <input type="text" id="nombreUsuario" placeholder="Nombre de Usuario" required>
+      <input type="password" id="contrasenaUsuario" placeholder="Contraseña" required>
+      <button type="submit">Entrar</button>
+    </form>
+  </div>
+
+  <script>
+    const loginForm = document.getElementById('loginForm');
+
+    loginForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const nombre = document.getElementById('nombreUsuario').value.trim();
+      const password = document.getElementById('contrasenaUsuario').value.trim();
+
+      if (!nombre || !password) {
+        alert('Por favor, complete todos los campos.');
+        return;
+      }
+
+      try {
+        const res = await fetch('/usuarios');
+        const usuarios = await res.json();
+
+        const usuarioEncontrado = usuarios.find(
+          (user) => user.nombre === nombre && user.password === password
+        );
+
+        if (usuarioEncontrado) {
+          // Guardamos el tipo de usuario en localStorage
+          localStorage.setItem('tipoUsuario', usuarioEncontrado.tipoUsuario);
+          localStorage.setItem('nombreUsuario', usuarioEncontrado.nombre);
+
+          alert('Inicio de sesión exitoso');
+          window.location.href = 'Usuarios.html'; // Redirigir a página de usuarios
+        } else {
+          alert('Usuario o contraseña incorrectos');
+        }
+      } catch (error) {
+        console.error('Error al iniciar sesión:', error);
+        alert('Error al conectar con el servidor');
+      }
+    });
+  </script>
+
+</body>
+</html>
+

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PTAR</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+  <!-- Carrusel Principal -->
+  <div class="container my-5">
+    <div class="row">
+      <div class="col-12 col-md-10 mx-auto">
+        <div class="carousel-container" id="carouselPrincipal">
+          <div class="carousel" id="carouselInner">
+            <div class="slide"><img src="Visuales/Imagen1.jpg" alt="Imagen 1"></div>
+            <div class="slide"><img src="Visuales/Imagen2.jpg" alt="Imagen 2"></div>
+            <div class="slide"><img src="Visuales/Imagen3.jpg" alt="Imagen 3"></div>
+          </div>
+          <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+          <button class="next" onclick="moveSlide(1)">&#10095;</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Carrusel de Datos Interesantes -->
+  <div class="container my-5">
+    <div class="row">
+      <div class="col-12 col-md-10 mx-auto">
+        <p class="letra-grande text-center">Datos Interesantes</p>
+        <div class="carousel-container" id="carouselDatos">
+          <div class="carousel" id="datosCarouselInner">
+            <!-- Datos interesantes cargados dinámicamente -->
+          </div>
+          <button class="prev" onclick="moveSlideDatos(-1)">&#10094;</button>
+          <button class="next" onclick="moveSlideDatos(1)">&#10095;</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="carrusel.js"></script>
+  <script src="carruselDatos.js"></script>
+</body>
+</html>
