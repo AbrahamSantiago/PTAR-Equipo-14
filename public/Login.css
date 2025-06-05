@@ -12,7 +12,7 @@ body {
 
 /* Barra superior */
 .barra-superior {
-  background: linear-gradient(to right, #030a29, #442e7e, #6967a8, #ffffff,#ffffff);
+  background-color: #030a29;
   padding: 10px 20px;
   color: white;
 }
@@ -38,7 +38,7 @@ body {
 
 /* Menú */
 .menu-navegacion {
-  background-color: #007bff;
+  background-color: #07134b;
 }
 
 .menu-navegacion ul {

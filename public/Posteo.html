@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>PTAR - Galería</title>
-  <link rel="stylesheet" href="Galeria.css">
+  <link rel="stylesheet" href="Posteo.css">
 </head>
 
 <body>
@@ -38,37 +38,23 @@
   </nav>
 
   <main>
-    <!-- Carrusel de Imágenes -->
+    <main>
     <section class="seccion">
-      <img src="Visuales/i_i.png" class="iconos">
-      <h2> Imágenes</h2>
-      <div class="carrusel-contenedor">
-        <div class="carrusel" id="imagenes">
-          <!-- Imágenes cargadas dinámicamente -->
+        <h2>Anuncios</h2>
+        <div class="carrusel-anuncios-container">
+        <div class="carrusel-anuncios" id="anunciosCarouselInner">
+            <!-- Los anuncios se cargarán dinámicamente aquí -->
         </div>
-        <button class="btn prev" onclick="moverCarrusel('imagenes', -1)">◀</button>
-        <button class="btn next" onclick="moverCarrusel('imagenes', 1)">▶</button>
-      </div>
-    </section>
-
-    <!-- Carrusel de Videos -->
-    <section class="seccion">
-      <img src="Visuales/i_v.png" class="iconos">
-      <h2> Videos</h2>
-      <div class="carrusel-contenedor">
-        <div class="carrusel" id="videos">
-          <!-- Videos cargados dinámicamente -->
+        <button class="btn prev" onclick="moverCarruselAnuncios(-1)">◀</button>
+        <button class="btn next" onclick="moverCarruselAnuncios(1)">▶</button>
         </div>
-        <button class="btn prev" onclick="moverCarrusel('videos', -1)">◀</button>
-        <button class="btn next" onclick="moverCarrusel('videos', 1)">▶</button>
-      </div>
     </section>
+</main>
   </main>
 
   <footer>
-    <p>&copy; 2025 - Galería PTAR</p>
+    <p>&copy; 2025 - Anuncios - PTAR</p>
   </footer>
-
-  <script src="galeria.js"></script>
+  <script src="Posteo.js"></script>
 </body>
 </html>

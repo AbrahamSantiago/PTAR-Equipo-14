@@ -12,13 +12,17 @@ async function cargarDatosInteresantes() {
       const slide = document.createElement('div');
       slide.className = 'slide';
 
-      // Solo si existe imagen, crear el <img>
+       // Solo agregar imagen si existe
       if (dato.imagen) {
         const img = document.createElement('img');
         img.src = `/uploads/${dato.imagen}`;
         img.alt = dato.titulo;
         slide.appendChild(img);
       }
+
+      const img = document.createElement('img');
+      img.src = `/uploads/${dato.imagen}`;
+      img.alt = dato.titulo;
 
       const caption = document.createElement('div');
       caption.className = 'caption';
@@ -27,6 +31,7 @@ async function cargarDatosInteresantes() {
         <p class="description">${dato.contenido}</p>
       `;
 
+      slide.appendChild(img);
       slide.appendChild(caption);
 
       carousel.appendChild(slide);

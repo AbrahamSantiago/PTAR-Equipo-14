@@ -4,9 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>PTAR - Galería</title>
-  <link rel="stylesheet" href="Galeria.css">
+  <link rel="stylesheet" href="index.css">
 </head>
+
 <body>
+  <!-- Modal para abrir imagen o video -->
+  <div id="modal" class="modal" onclick="cerrarModal()">
+    <span class="cerrar">&times;</span>
+    <div class="modal-contenido" id="modal-contenido">
+      <!-- Aquí se inyecta la imagen o video -->
+    </div>
+  </div>
+
   <!-- Barra institucional -->
   <div class="barra-superior">
     <div class="barra-contenido">
@@ -19,41 +28,79 @@
   <!-- Menú de navegación -->
   <nav class="menu-navegacion">
     <ul>
-      <li><a href="#">Información</a></li>
-      <li><a href="#">Servicio Social</a></li>
-      <li><a href="#">Contacto</a></li>
-      <li><a href="#">Prácticas profesionales</a></li>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="Posteo.html">Anuncios</a></li>
+      <li><a href="SS.html">Servicio Social</a></li>
+      <li><a href="PP.html">Prácticas profesionales</a></li>
       <li><a href="Galeria.html">Galería</a></li>
       <li><a href="Login.html">Portal</a></li>
     </ul>
   </nav>
 
-  <header>
-    <h1>Inicio</h1>
-  </header>
-
   <main>
-    <!-- Carrusel de Datos Interesantes -->
-  <div class="container my-5">
+    <div class="container" id="informacion">
     <div class="row">
-      <div class="col-12 col-md-10 mx-auto">
-        <p class="letra-grande text-center">Datos Interesantes</p>
-        <div class="carousel-container" id="carouselDatos">
-          <div class="carousel" id="datosCarouselInner">
-            <!-- Datos interesantes cargados dinámicamente -->
+      <div class="col-12 col-md-8">
+        <p class="letra-grande">¿Qué es la Planta de Tratamiento de Aguas Residuales?</p>
+        <p ">La Planta de Tratamiento de Aguas Residuales (PTAR) de la FES Acatlán es un sistema diseñado para procesar y reutilizar el agua residual del campus, promoviendo la sustentabilidad y el cuidado del medio ambiente.</p>
+
+        <p class="letra-subtitulo">Objetivo</p> 
+        <p ">Construir y poner en marcha la PTAR para el riego de las áreas verdes de la FES Acatlan, con el fin de minimizar el impacto ecológico, así como coadyudar a la perseveración del vital líquido suministrado por el pozo </p>
+        <p class="letra-subtitulo">Características Principales</p>
+        <ul>
+          <li><strong>Tecnología:</strong> Usa reactores anaerobios y aerobios para limpiar el agua.</li>
+          <li><strong>Capacidad:</strong> Procesa hasta 7.5 litros por segundo.</li>
+          <li><strong>Sustentabilidad:</strong> Genera composta con los lodos tratados.</li>
+        </ul>
+      </div>
+      <div class="image-container">
+        <img src="Visuales/PTAR_MOD.jpeg" alt="Planta de Tratamiento de Agua">
+      </div>
+    </div>
+    <!-- video youtube-->
+    <div class="container">
+      <div class="video-container">
+        <p class="letra-grande text-center">Conocenos</p>
+        <iframe src="https://www.youtube.com/embed/V1rAZFW-8H8?origin=http://localhost" 
+                title="Video de Planta";
+                width="100";
+                height="150"
+                allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+    <!-- Carrusel de Datos Interesantes -->
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-10 mx-auto">
+          <p class="letra-grande text-center">Datos Interesantes</p>
+          <div class="carousel-container" id="carouselDatos">
+            <div class="carousel" id="datosCarouselInner">
+              <!-- Datos interesantes cargados dinámicamente -->
+            </div>
+            <button class="prev" onclick="moveSlideDatos(-1)">&#10094;</button>
+            <button class="next" onclick="moveSlideDatos(1)">&#10095;</button>
           </div>
-          <button class="prev" onclick="moveSlideDatos(-1)">&#10094;</button>
-          <button class="next" onclick="moveSlideDatos(1)">&#10095;</button>
         </div>
       </div>
     </div>
-  </div>
+    <div class="container my-4" id="mapa">
+      <p class="letra-grande text-center">Ubicacion</p>
+      <div class="map-responsive">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3761.3425882219267!2d-99.24908302514177!3d19.483891181806474!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d2030f995d7901%3A0xc8546d108471abcd!2sFacultad%20de%20Estudios%20Superiores%20Acatl%C3%A1n%20UNAM!5e0!3m2!1ses!2smx!4v1741286569264!5m2!1ses!2smx?origin=http://localhost" 
+          width="600" 
+          height="450" 
+          style="border:0;" 
+          allowfullscreen="" loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+
   </main>
 
   <footer>
-    <p>&copy; 2025 - UNAM</p>
+    <p>&copy; 2025 - Galería PTAR</p>
   </footer>
-  <script src="carrusel.js"></script>
   <script src="carruselDatos.js"></script>
 </body>
 </html>

@@ -7,6 +7,41 @@
   <link rel="stylesheet" href="Usuarios.css">
 </head>
 <body>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const tipoUsuario = localStorage.getItem('tipoUsuario');
+        const select = document.getElementById('tipoUsuario');
+
+        // Limpia primero el select
+        select.innerHTML = '';
+
+        if (tipoUsuario === 'Administrador') {
+          // Admin puede agregar todos
+          const opciones = ['Administrador', 'Ingeniero', 'Estudiante'];
+          opciones.forEach(tipo => {
+            const option = document.createElement('option');
+            option.value = tipo;
+            option.textContent = tipo;
+            select.appendChild(option);
+          });
+        } else if (tipoUsuario === 'Ingeniero') {
+          // Ingeniero puede agregar Ingenieros y Estudiantes
+          const opciones = ['Ingeniero', 'Estudiante'];
+          opciones.forEach(tipo => {
+            const option = document.createElement('option');
+            option.value = tipo;
+            option.textContent = tipo;
+            select.appendChild(option);
+          });
+        } else {
+          // Si es Estudiante, no mostrar formulario
+          const formulario = document.getElementById('usuarioForm').parentElement;
+          formulario.style.display = 'none'; // Oculta el contenedor del formulario
+        }
+      });
+    </script>
+
+
   <!-- Barra superior -->
   <div class="barra-superior">
     <div class="barra-contenido">
@@ -19,10 +54,10 @@
   <!-- Menú principal -->
   <nav class="menu-navegacion">
     <ul>
-      <li><a href="#">Información</a></li>
-      <li><a href="#">Servicio Social</a></li>
-      <li><a href="#">Contacto</a></li>
-      <li><a href="#">Prácticas profesionales</a></li>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="Posteo.html">Anuncios</a></li>
+      <li><a href="SS.html">Servicio Social</a></li>
+      <li><a href="PP.html">Prácticas profesionales</a></li>
       <li><a href="Galeria.html">Galería</a></li>
       <li><a href="Login.html">Portal</a></li>
     </ul>
@@ -41,8 +76,8 @@
     </aside>
 	
   <div class="container">
-    <h2>Agregar Usuario</h2>
     <div class="formulario-container">
+      <h2>Agregar Usuario</h2>
       <form id="usuarioForm">
         <input type="text" id="nombre" placeholder="Nombre de usuario" required>
         <input type="password" id="password" placeholder="Contraseña" required>

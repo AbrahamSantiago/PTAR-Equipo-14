@@ -11,7 +11,9 @@ app.use('/uploads', express.static('uploads'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+
 //Para Galeria
+
 
 const METADATA_FILE = path.join(__dirname, 'metadata.json');
 let metadata = [];
@@ -65,7 +67,9 @@ app.delete('/delete/:filename', (req, res) => {
   });
 });
 
+
 // Para datos
+
 
 const datosPath = path.join(__dirname, 'datos.json');
 // Cargar datos interesantes
@@ -98,7 +102,9 @@ app.delete('/eliminar-dato/:titulo', (req, res) => {
   res.json({ message: 'Dato eliminado' });
 });
 
+
 //Para Usuarios
+
 
 const usuariosPath = path.join(__dirname, 'usuarios.json');
 // Cargar usuarios existentes
@@ -117,6 +123,7 @@ app.post('/agregar-usuario', (req, res) => {
   fs.writeFileSync(usuariosPath, JSON.stringify(usuarios, null, 2));
   res.json({ message: 'Usuario agregado correctamente' });
 });
+
 // Obtener usuarios
 app.get('/usuarios', (req, res) => {
   res.json(usuarios); // Incluyendo nombre, password, tipoUsuario
@@ -134,7 +141,9 @@ app.get('/usuarios', (req, res) => {
   res.json(usuarios);
 });
 
+
 //Para Anuncios
+
 
 // Archivo donde se guardan los anuncios
 const anunciosPath = path.join(__dirname, 'anuncios.json');

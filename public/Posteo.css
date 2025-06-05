@@ -24,56 +24,62 @@ main {
 
 .seccion {
   margin: 40px auto;
-  max-width: 1200px; /* Controlar el ancho máximo */
+  max-width: 1200px;
   background: white;
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  text-align: center; /* Centrar los títulos también */
+  text-align: center;
 }
 
-.carrusel-container {
+.carrusel-anuncios-container {
   position: relative;
   overflow: hidden;
   width: 100%;
   margin: auto;
 }
 
-.carrusel {
+.carrusel-anuncios {
   display: flex;
   transition: transform 0.5s ease-in-out;
-  overflow-x: auto;
-  scroll-behavior: smooth;
   gap: 20px;
   padding: 10px 0;
-  scroll-snap-type: x mandatory; /* Scroll snap horizontal */
+  scroll-snap-type: x mandatory;
+  overflow-x: auto;
 }
 
-.carrusel .slide {
-  flex: 0 0 80%; /* Cada slide ocupa el 80% del ancho */
-  max-width: 80%;
-  scroll-snap-align: center; /* Snap perfecto */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.anuncio-slide {
+  min-width: 300px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  scroll-snap-align: start;
+  text-align: center;
 }
 
-.carrusel img {
-  width: 100%;
-  height: auto;
-  max-height: 400px; /* Opcional, para limitar altura */
-  object-fit: contain;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+.anuncio-slide h3 {
+  color: #1e88e5;
+  margin-bottom: 10px;
 }
 
-.carrusel video {
-  height: 400px;
-  object-fit: cover;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+.anuncio-slide p {
+  font-size: 1rem;
 }
 
+
+.letra-grande {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.caption {
+  margin-top: 10px;
+}
+
+.description {
+  font-size: 1rem;
+}
 .btn {
   background: #2196f3;
   color: white;
@@ -153,36 +159,4 @@ footer {
 
 .menu-navegacion a:hover {
   color: #cce5ff;
-}
-
-.modal {
-  display: none; /* Oculto por defecto */
-  position: fixed;
-  z-index: 1000;
-  padding: 20px;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro y transparente */
-  justify-content: center;
-  align-items: center;
-}
-
-.modal-contenido img,
-.modal-contenido video {
-  max-width: 90%;
-  max-height: 80vh;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(255, 255, 255, 0.5);
-}
-
-.cerrar {
-  position: absolute;
-  top: 20px;
-  right: 40px;
-  color: white;
-  font-size: 40px;
-  font-weight: bold;
-  cursor: pointer;
 }

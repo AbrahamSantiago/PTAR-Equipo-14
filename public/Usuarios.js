@@ -47,6 +47,7 @@ async function cargarUsuarios() {
       ${tipoLogueado === 'Administrador' ? `<strong>Contraseña:</strong> ${usuario.password}<br>` : ''}
     `;
 
+    // 🔒 Solo Admin e Ingeniero pueden eliminar, pero Ingeniero solo a Estudiantes
     const puedeEliminar = (
       (tipoLogueado === 'Administrador' && usuario.tipoUsuario !== 'Administrador') ||
       (tipoLogueado === 'Ingeniero' && usuario.tipoUsuario === 'Estudiante')
