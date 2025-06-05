@@ -1,67 +1,105 @@
+/* Reset */
 * {
-    box-sizing: border-box;
-  }
-  
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    background-image: url("/static/Imagenes/FotodeReactor.jpg");
+body {
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+}
 
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .login-container {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 80px;
-    border-radius: 12px;
-    width: 100%;
-    max-width: 600px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  }
-  
-  .login-container h2 {
-    text-align: center;
-    margin-bottom: 24px;
-  }
-  
-  .login-container input {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 16px;
-  }
-  
-  .login-container button {
-    width: 100%;
-    padding: 12px;
-    background-color: #3498db;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .login-container button:hover {
-    background-color: #2980b9;
-  }
-  
-  .error-message {
-    display: none;
-    margin-top: 5px;
-    color: red;
-    text-align: center;
-  }
-  .letra-grande {
-    font-size: 40px;
-  }
+/* Barra superior */
+.barra-superior {
+  background-color: #030a29;
+  padding: 10px 20px;
+  color: white;
+}
+
+.barra-contenido {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.logo-unam, .logo-ptar {
+  height: 60px;
+  object-fit: contain;
+}
+
+.titulo-barra {
+  flex: 1;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+/* Menú */
+.menu-navegacion {
+  background-color: #07134b;
+}
+
+.menu-navegacion ul {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 10px 0;
+}
+
+.menu-navegacion li {
+  margin: 0 15px;
+}
+
+.menu-navegacion a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.menu-navegacion a:hover {
+  color: #cce5ff;
+}
+
+/* Fondo y login */
+
+
+.form-login {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.2);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.form-login h2 {
+  margin-bottom: 20px;
+}
+
+.form-login input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.form-login button {
+  background-color: #0d6efd;
+  color: white;
+  border: none;
+  padding: 12px;
+  width: 100%;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.form-login button:hover {
+  background-color: #0b5ed7;
+}

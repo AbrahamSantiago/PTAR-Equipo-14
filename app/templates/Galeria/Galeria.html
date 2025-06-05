@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PTAR - Galería</title>
+  <link rel="stylesheet" href="{{url_for('static',filename='css/Galeria.css')}}">
+</head>
+<body>
+  <!-- Barra institucional -->
+  <div class="barra-superior">
+    <div class="barra-contenido">
+      <img src="Visuales/UNAM.png" alt="UNAM" class="logo-unam">
+      <h1 class="titulo-barra">PTAR: Planta de Tratamiento de Aguas Residuales</h1>
+      <img src="Visuales/PTAR.png" alt="PTAR FES Acatlán" class="logo-ptar">
+    </div>
+  </div>
+
+  <!-- Menú de navegación -->
+  <nav class="menu-navegacion">
+    <ul>
+      <li><a href="{{ url_for('main.index')}}">Información</a></li>
+      <li><a href="{{url_for('main.servicio_social')}}">Servicio Social</a></li>
+      <li><a href="#">Contacto</a></li>
+      <li><a href="url_for('main.PracticasProfesionales')">Prácticas profesionales</a></li>
+      <li><a href="url_for('main.Galeria')">Galería</a></li>
+      <li><a href="url_for('main.login')">Portal</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <h1>Galería</h1>
+  </header>
+
+  <main>
+    <!-- Carrusel de Imágenes -->
+    <section class="seccion">
+      <h2>🖼️ Imágenes</h2>
+      <div class="carrusel-contenedor">
+        <button class="btn prev" onclick="moverCarrusel('imagenes', -1)">◀</button>
+        <div class="carrusel" id="imagenes">
+          <!-- Imágenes cargadas dinámicamente -->
+        </div>
+        <button class="btn next" onclick="moverCarrusel('imagenes', 1)">▶</button>
+      </div>
+    </section>
+
+    <!-- Carrusel de Videos -->
+    <section class="seccion">
+      <h2>📹 Videos</h2>
+      <div class="carrusel-contenedor">
+        <button class="btn prev" onclick="moverCarrusel('videos', -1)">◀</button>
+        <div class="carrusel" id="videos">
+          <!-- Videos cargados dinámicamente -->
+        </div>
+        <button class="btn next" onclick="moverCarrusel('videos', 1)">▶</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 - Galería Multimedia Interactiva PTAR</p>
+  </footer>
+
+  <script src="{{url_for('static',filename='js/Galeria.js')}}"></script>
+</body>
+</html>

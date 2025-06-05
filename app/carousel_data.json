@@ -3,14 +3,28 @@
         "id": 1,
         "url": "/static/uploads/JefePlanta_1749072080.jpg",
         "link": "",
-        "title": "Imagen 1749072080683",
-        "description": "Agrega una descripción para esta imagen"
+        "title": "Ingeniero de planta",
+        "description": "Conoce a"
     },
     {
         "id": 2,
         "url": "/static/uploads/Logo_PTAR_1749072092.png",
         "link": "",
         "title": "Imagen 1749072092818",
+        "description": "Agrega una descripción para esta imagen"
+    },
+    {
+        "id": 3,
+        "url": "/uploads/PTAR_MOD_1749146427.jpeg",
+        "link": "",
+        "title": "Imagen 1749146427298",
+        "description": "Agrega una descripción para esta imagen"
+    },
+    {
+        "id": 4,
+        "url": "/uploads/DigramaPTAR_1749148449.png",
+        "link": "",
+        "title": "Imagen 1749148449090",
         "description": "Agrega una descripción para esta imagen"
     }
 ]

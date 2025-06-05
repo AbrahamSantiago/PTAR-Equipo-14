@@ -154,13 +154,16 @@ def add_carousel_item():
             max_id = max([item.get('id', 0) for item in carousel_data], default=0)
             new_id = max_id + 1
             
+            # Antes (malo):
             new_item = {
-                'id': new_id,
-                'url': f"/static/uploads/{unique_filename}",
-                'link': request.form.get('link', ''),
-                'title': request.form.get('title', f'Imagen {new_id}'),
-                'description': request.form.get('description', 'Agrega una descripción para esta imagen')
-            }
+            'id': new_id,
+            # Usamos url_for('main.ver_archivo', filename=…) en lugar de /static/uploads/…
+            'url': url_for('main.ver_archivo', filename=unique_filename),
+            'link': request.form.get('link', ''),
+            'title': request.form.get('title', f'Imagen {new_id}'),
+            'description': request.form.get('description', 'Agrega una descripción para esta imagen')
+        }
+
             
             carousel_data.append(new_item)
             
@@ -249,9 +252,9 @@ def debug_carousel():
     })
 
 # Rutas para las páginas del navbar
-@main.route('/galeria')
-def galeria():
-    return render_template('galeria/galeria.html')
+@main.route('/Galeria')
+def Galeria():
+    return render_template('Galeria/Galeria.html')
 
 @main.route('/contacto')
 def contacto():
@@ -259,11 +262,11 @@ def contacto():
 
 @main.route('/servicio-social')
 def servicio_social():
-    return render_template('servicio/servicio_social.html')
+    return render_template('ServicioSocial/ServicioSocial.html')
 
-@main.route('/practicas')
-def practicas():
-    return render_template('practicas/practicas.html')
+@main.route('/PracticasProfesionales')
+def PracticasProfesionales():
+    return render_template('ServicioSocial/PracticasProfesionales.html')
 
 @main.route('/login')
 def login():
@@ -276,3 +279,7 @@ def PortalAdmin():
 @main.route('/Panel_Post')
 def Panel_Post():
     return render_template('Galeria/Panel_Post.html')
+
+@main.route('/Contacto')
+def Contacto():
+    return render_template('Inicio/Contacto.html')

@@ -1,0 +1,32 @@
+[
+  {
+    "nombre": "Administrador",
+    "password": "1234",
+    "tipoUsuario": "Administrador"
+  },
+  {
+    "nombre": "315026731",
+    "password": "12081999",
+    "tipoUsuario": "Administrador"
+  },
+  {
+    "nombre": "admin",
+    "password": "1234",
+    "tipoUsuario": "Administrador"
+  },
+  {
+    "nombre": "Inge",
+    "password": "1234",
+    "tipoUsuario": "Ingeniero"
+  },
+  {
+    "nombre": "Estu",
+    "password": "1234",
+    "tipoUsuario": "Estudiante"
+  },
+  {
+    "nombre": "a2",
+    "password": "1234",
+    "tipoUsuario": "Administrador"
+  }
+]

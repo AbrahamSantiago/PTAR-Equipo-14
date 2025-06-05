@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administración de Usuarios</title>
+  <link rel="stylesheet" href="{{url_for('static',filename='css/Usuarios.css')}}">
+</head>
+<body>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const tipoUsuario = localStorage.getItem('tipoUsuario');
+        const select = document.getElementById('tipoUsuario');
+
+        // Limpia primero el select
+        select.innerHTML = '';
+
+        if (tipoUsuario === 'Administrador') {
+          // Admin puede agregar todos
+          const opciones = ['Administrador', 'Ingeniero', 'Estudiante'];
+          opciones.forEach(tipo => {
+            const option = document.createElement('option');
+            option.value = tipo;
+            option.textContent = tipo;
+            select.appendChild(option);
+          });
+        } else if (tipoUsuario === 'Ingeniero') {
+          // Ingeniero puede agregar Ingenieros y Estudiantes
+          const opciones = ['Ingeniero', 'Estudiante'];
+          opciones.forEach(tipo => {
+            const option = document.createElement('option');
+            option.value = tipo;
+            option.textContent = tipo;
+            select.appendChild(option);
+          });
+        } else {
+          // Si es Estudiante, no mostrar formulario
+          const formulario = document.getElementById('usuarioForm').parentElement;
+          formulario.style.display = 'none'; // Oculta el contenedor del formulario
+        }
+      });
+    </script>
+
+
+  <!-- Barra superior -->
+  <div class="barra-superior">
+    <div class="barra-contenido">
+      <img src="Visuales/UNAM.png" alt="UNAM" class="logo-unam">
+      <h1 class="titulo-barra">PTAR: Planta de Tratamiento de Aguas Residuales</h1>
+      <img src="Visuales/PTAR.png" alt="PTAR" class="logo-ptar">
+    </div>
+  </div>
+
+  <!-- Menú principal -->
+  <nav class="menu-navegacion">
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="Posteo.html">Anuncios</a></li>
+      <li><a href="SS.html">Servicio Social</a></li>
+      <li><a href="PP.html">Prácticas profesionales</a></li>
+      <li><a href="Galeria.html">Galería</a></li>
+      <li><a href="Login.html">Portal</a></li>
+    </ul>
+  </nav>
+
+  <div class="contenido">
+    <!-- Barra lateral -->
+    <aside class="sidebar">
+      <h3>Secciones</h3>
+      <ul>
+        <li><a href="contenido.html">Galeria</a></li>
+        <li><a href="anuncios.html">Anuncios</a></li>
+        <li><a href="datos.html"> Datos Interesantes</a></li>
+		<li><a href="usuarios.html"> Usuarios</a></li>
+      </ul>
+    </aside>
+	
+  <div class="container">
+    <div class="formulario-container">
+      <h2>Agregar Usuario</h2>
+      <form id="usuarioForm">
+        <input type="text" id="nombre" placeholder="Nombre de usuario" required>
+        <input type="password" id="password" placeholder="Contraseña" required>
+        <select id="tipoUsuario" required>
+          <option value="">Seleccione un tipo</option>
+          <option value="Administrador">Administrador</option>
+          <option value="Ingeniero">Ingeniero</option>
+          <option value="Estudiante">Estudiante</option>
+        </select>
+        <button type="submit">Agregar Usuario</button>
+      </form>
+    </div>
+
+    <h2>Usuarios Registrados</h2>
+    <div id="usuariosContainer"></div>
+  </div>
+
+  <script src="Usuarios.js"></script>
+</body>
+</html>

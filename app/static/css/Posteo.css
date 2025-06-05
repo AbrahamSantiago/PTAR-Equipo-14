@@ -1,0 +1,162 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f0f0f0;
+  color: #333;
+  line-height: 1.6;
+}
+
+header {
+  background: #1e88e5;
+  color: white;
+  text-align: center;
+  padding: 30px 20px;
+}
+
+main {
+  padding: 20px;
+}
+
+.seccion {
+  margin: 40px auto;
+  max-width: 1200px;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.carrusel-anuncios-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  margin: auto;
+}
+
+.carrusel-anuncios {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  gap: 20px;
+  padding: 10px 0;
+  scroll-snap-type: x mandatory;
+  overflow-x: auto;
+}
+
+.anuncio-slide {
+  min-width: 300px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  scroll-snap-align: start;
+  text-align: center;
+}
+
+.anuncio-slide h3 {
+  color: #1e88e5;
+  margin-bottom: 10px;
+}
+
+.anuncio-slide p {
+  font-size: 1rem;
+}
+
+
+.letra-grande {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.caption {
+  margin-top: 10px;
+}
+
+.description {
+  font-size: 1rem;
+}
+.btn {
+  background: #2196f3;
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.btn:hover {
+  background: #1976d2;
+}
+
+footer {
+  background: #263238;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  margin-top: 50px;
+}
+
+.barra-superior {
+  background-color: #030a29;
+  color: white;
+  padding: 10px 20px;
+}
+
+.barra-contenido {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.logo-unam, .logo-ptar {
+  height: 60px;
+  object-fit: contain;
+}
+
+.iconos {
+  height: 24px;
+  object-fit: contain;
+}
+
+.titulo-barra {
+  flex: 1;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* Menú de navegación */
+.menu-navegacion {
+  background-color: #07134b;
+}
+
+.menu-navegacion ul {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+}
+
+.menu-navegacion li {
+  margin: 0 20px;
+}
+
+.menu-navegacion a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.menu-navegacion a:hover {
+  color: #cce5ff;
+}

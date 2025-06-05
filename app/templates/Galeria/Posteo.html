@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PTAR - Galería</title>
+  <link rel="stylesheet" href="Posteo.css">
+</head>
+
+<body>
+  <!-- Barra institucional -->
+  <div class="barra-superior">
+    <div class="barra-contenido">
+      <img src="Visuales/UNAM.png" alt="UNAM" class="logo-unam">
+      <h1 class="titulo-barra">PTAR: Planta de Tratamiento de Aguas Residuales</h1>
+      <img src="Visuales/PTAR.png" alt="PTAR FES Acatlán" class="logo-ptar">
+    </div>
+  </div>
+
+  <!-- Menú de navegación -->
+  <nav class="menu-navegacion">
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="Posteo.html">Anuncios</a></li>
+      <li><a href="SS.html">Servicio Social</a></li>
+      <li><a href="PP.html">Prácticas profesionales</a></li>
+      <li><a href="Galeria.html">Galería</a></li>
+      <li><a href="Login.html">Portal</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <main>
+    <section class="seccion">
+        <h2>Anuncios</h2>
+        <div class="carrusel-anuncios-container">
+        <div class="carrusel-anuncios" id="anunciosCarouselInner">
+            <!-- Los anuncios se cargarán dinámicamente aquí -->
+        </div>
+        <button class="btn prev" onclick="moverCarruselAnuncios(-1)">◀</button>
+        <button class="btn next" onclick="moverCarruselAnuncios(1)">▶</button>
+        </div>
+    </section>
+</main>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 - Anuncios - PTAR</p>
+  </footer>
+  <script src="Posteo.js"></script>
+</body>
+</html>
