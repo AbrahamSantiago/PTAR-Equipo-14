@@ -1,31 +1,39 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>PTAR</title>
-  <link rel="stylesheet" href="index.css">
+  <title>PTAR - Galería</title>
+  <link rel="stylesheet" href="Galeria.css">
 </head>
 <body>
-
-  <!-- Carrusel Principal -->
-  <div class="container my-5">
-    <div class="row">
-      <div class="col-12 col-md-10 mx-auto">
-        <div class="carousel-container" id="carouselPrincipal">
-          <div class="carousel" id="carouselInner">
-            <div class="slide"><img src="Visuales/Imagen1.jpg" alt="Imagen 1"></div>
-            <div class="slide"><img src="Visuales/Imagen2.jpg" alt="Imagen 2"></div>
-            <div class="slide"><img src="Visuales/Imagen3.jpg" alt="Imagen 3"></div>
-          </div>
-          <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
-          <button class="next" onclick="moveSlide(1)">&#10095;</button>
-        </div>
-      </div>
+  <!-- Barra institucional -->
+  <div class="barra-superior">
+    <div class="barra-contenido">
+      <img src="Visuales/UNAM.png" alt="UNAM" class="logo-unam">
+      <h1 class="titulo-barra">PTAR: Planta de Tratamiento de Aguas Residuales</h1>
+      <img src="Visuales/PTAR.png" alt="PTAR FES Acatlán" class="logo-ptar">
     </div>
   </div>
 
-  <!-- Carrusel de Datos Interesantes -->
+  <!-- Menú de navegación -->
+  <nav class="menu-navegacion">
+    <ul>
+      <li><a href="#">Información</a></li>
+      <li><a href="#">Servicio Social</a></li>
+      <li><a href="#">Contacto</a></li>
+      <li><a href="#">Prácticas profesionales</a></li>
+      <li><a href="Galeria.html">Galería</a></li>
+      <li><a href="Login.html">Portal</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <h1>Inicio</h1>
+  </header>
+
+  <main>
+    <!-- Carrusel de Datos Interesantes -->
   <div class="container my-5">
     <div class="row">
       <div class="col-12 col-md-10 mx-auto">
@@ -40,7 +48,11 @@
       </div>
     </div>
   </div>
+  </main>
 
+  <footer>
+    <p>&copy; 2025 - UNAM</p>
+  </footer>
   <script src="carrusel.js"></script>
   <script src="carruselDatos.js"></script>
 </body>
