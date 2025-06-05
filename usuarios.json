@@ -15,11 +15,6 @@
     "tipoUsuario": "Administrador"
   },
   {
-    "nombre": "Inge",
-    "password": "1234",
-    "tipoUsuario": "Ingeniero"
-  },
-  {
     "nombre": "Estu",
     "password": "1234",
     "tipoUsuario": "Estudiante"
